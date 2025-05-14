@@ -1,0 +1,57 @@
+// Variables
+$whatsapp-color: #25D366;
+$whatsapp-hover-color: #128C7E;
+$button-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+
+// Estilos del botón de WhatsApp
+.whatsapp-button {
+    display: inline-flex;
+    background-color: $whatsapp-color;
+    color: white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    box-shadow: $button-shadow;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background-color: $whatsapp-hover-color;
+        transform: scale(1.1);
+    }
+
+    .whatsapp-icon {
+        width: 24px;
+        height: 24px;
+        fill: white;
+    }
+
+    // Variante para botón fijo en la esquina
+    &.whatsapp-fixed {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        z-index: 1000;
+
+        .whatsapp-icon {
+            width: 35px;
+            height: 35px;
+        }
+    }
+
+    // Variante con texto
+    &.whatsapp-with-text {
+        border-radius: 25px;
+        width: auto;
+        padding: 8px 16px;
+
+        .whatsapp-text {
+            margin-left: 8px;
+            font-weight: 500;
+        }
+    }
+}
