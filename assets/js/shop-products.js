@@ -83,13 +83,10 @@ async function fetchAllProducts() {
                   <div class="product-item style-one mb-40"> 
                     <div class="product-thumbnail">
                       <img src="${imageUrl}" alt="${productTitle}" />                  
-                      <div class="hover-content">
-                        <a href="#" class="icon-btn"><i class="fa fa-heart"></i></a>
+                      <div class="hover-content">                       
                         <a href="${imageUrl}" class="img-popup icon-btn"><i class="fa fa-eye"></i></a>
                       </div>
                       <div class="cart-button">
-                        <a href="#" class="cart-btn"><i class="far fa-shopping-basket"></i>
-                          <span class="text">Add To Cart</span></a>
                       </div>
                     </div>
                     <div class="product-info-wrap">

@@ -191,12 +191,20 @@ document.addEventListener("DOMContentLoaded", function () {
       if (thumbSlider) thumbSlider.innerHTML = "";
     }
 
-    // Aquí puedes poblar otros detalles como SKU, disponibilidad, tallas, colores, etc.
-    // Ejemplo:
-    // const productSKUElement = document.getElementById('product-sku');
-    // if (productSKUElement && product.sku) {
-    //     productSKUElement.textContent = product.sku;
-    // }
+    // Actualizar enlace del botón de WhatsApp
+    const whatsappButton = document.querySelector('.product-cart-variation .whatsapp-button');
+    if (whatsappButton) {
+        const phoneNumber = "+573237564731";
+        const productUrl = window.location.href; // URL de la página actual del producto
+        // Asegurarse de que product.titulo existe y tiene valor antes de usarlo
+        const productTitleForMessage = product.titulo || "este producto"; 
+        const message = `Hola, estoy interesado en ${productTitleForMessage}. Puedes verlo aquí: ${productUrl}`;
+        const whatsappWebUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+        whatsappButton.href = whatsappWebUrl;
+    } else {
+        console.warn('Botón de WhatsApp (.product-cart-variation .whatsapp-button) no encontrado para actualizar. Asegúrate de que el botón exista en tu HTML con la clase "whatsapp-button" dentro de un elemento con clase "product-cart-variation".');
+    }
   }
 
   // Ejecución principal: obtener ID y cargar detalles
