@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const strapiUrl = "http://localhost:1337";
+  const strapiUrl = "https://gm-cms-production.up.railway.app";
   const productsApiEndpoint = "/api/productos"; 
 
   // Función para obtener el ID del producto desde los parámetros de la URL

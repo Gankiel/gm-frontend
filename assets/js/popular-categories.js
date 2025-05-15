@@ -1,4 +1,4 @@
-const STRAPI_POPULAR_URL = "http://localhost:1337";
+const STRAPI_POPULAR_URL = "https://gm-cms-production.up.railway.app";
 
 // Función para obtener los datos de las categorías populares
 async function fetchPopularCategoriesData() {

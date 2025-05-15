@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const strapiUrl = "http://localhost:1337";
+  const strapiUrl = "https://gm-cms-production.up.railway.app";
   const categoriesApiEndpoint = "/api/tipo-catalogos?populate=image"; // Para listar categorías
   const productsByCategoryBaseApiEndpoint = "/api/tipo-catalogos"; // Para productos de UNA categoría
   const allProductsApiEndpoint = "/api/productos?populate=imagenes"; // Para todos los productos

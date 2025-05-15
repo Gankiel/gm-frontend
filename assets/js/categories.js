@@ -1,5 +1,5 @@
 // Configuración de la URL base de Strapi
-const STRAPI_URL = "http://localhost:1337";
+const STRAPI_URL = "https://gm-cms-production.up.railway.app";
 
 // Función para obtener los datos del slider 
 async function fetchHeroSlider() {
