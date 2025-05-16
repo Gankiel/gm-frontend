@@ -12,7 +12,7 @@ if (!productContainer) {
 }
 
 async function fetchAllProducts() {
-  const pageSize = 200; 
+  const pageSize = 500; 
   let page = 1;
   let allProducts = [];
   let totalPages = 1;
