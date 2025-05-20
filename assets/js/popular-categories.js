@@ -72,22 +72,14 @@ async function renderPopularCategoriesSlider() {
     }
 
     $categorySlider.slick({
-      dots: false,
-      arrows: false,
+      dots: true,
+      arrows: true,
       infinite: true,
-      speed: 3000, // Velocidad de la animación (más lento para mejor visibilidad)
+      speed: 6000, // Velocidad de la animación
       autoplay: true,
-      autoplaySpeed: 0, // Tiempo entre transiciones (0 para transición continua)
-      cssEase: "linear", // Transición lineal para movimiento suave
-      slidesToShow: 6,
+      autoplaySpeed: 0, // Transición continua
+      slidesToShow: 3,
       slidesToScroll: 1,
-      pauseOnHover: true, // No pausar al pasar el ratón
-      pauseOnFocus: true, // No pausar al hacer foco
-      swipe: true, // Deshabilitar el arrastre manual
-      touchMove: true, // Deshabilitar el movimiento táctil
-      variableWidth: false, // Mantener ancho fijo para mejor rendimiento
-      centerMode: false,
-      focusOnSelect: false,
       appendArrows: $(".category-arrows.style-one"),
 
       prevArrow:
