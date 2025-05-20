@@ -75,9 +75,9 @@ async function renderPopularCategoriesSlider() {
       dots: true,
       arrows: true,
       infinite: true,
-      speed: 300, // Velocidad de la transición entre slides
+      speed: 600, // Velocidad de la transición entre slides
       autoplay: false, // Desactivamos el autoplay
-      slidesToShow: 3,
+      slidesToShow: 4,
       slidesToScroll: 1,
       appendArrows: $(".category-arrows.style-one"),
 
