@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
         dots: true,
         arrows: true,
         infinite: true,
-        speed: 300, // Velocidad de la transición entre slides
+        speed: 600, // Velocidad de la transición entre slides
         autoplay: false, // Desactivamos el autoplay
         slidesToShow: 3,
         slidesToScroll: 1,
