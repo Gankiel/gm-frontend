@@ -98,21 +98,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
       $featureSlider.slick({
         dots: true,
-        arrows: false,
+        arrows: true,
         infinite: true,
         speed: 6000, // Velocidad de la animación
         autoplay: true,
         autoplaySpeed: 0, // Transición continua
-        cssEase: "linear", // Movimiento suave
         slidesToShow: 3,
         slidesToScroll: 1,
-        pauseOnHover: true, // Pausar al pasar el ratón
-        pauseOnFocus: true, // Pausar al hacer foco
-        swipe: true, // Permitir arrastre táctil
-        touchMove: true, // Permitir movimiento táctil
-        variableWidth: false, // Mejor rendimiento
-        centerMode: false,
-        focusOnSelect: false,
         appendArrows: jQuery(".feature-arrows.style-one"),
         prevArrow:
           '<button type="button" class="slick-prev"><i class="fas fa-chevron-left"></i></button>',
