@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
     catalogs.forEach((catalog) => {
       // URL de la imagen: usamos directamente catalog.imagenes.url si está disponible
       const imageUrl =
-        catalog.imagenes && catalog.imagenes.url 
+        catalog.imagenes && catalog.imagenes.url
           ? catalog.imagenes.url
           : "assets/images/catalogos - productos/default-placeholder.png"; // Imagen por defecto
 
@@ -51,7 +51,9 @@ document.addEventListener("DOMContentLoaded", function () {
           ? `${catalog.precio.toLocaleString()}`
           : "";
 
-      const productDetailUrl = `shop-details.html?id=${catalog.id}`; // Usamos el ID principal del catálogo
+      // Usar el link del catálogo si está disponible, de lo contrario usar el enlace por defecto
+      const productDetailUrl =
+        catalog.link || `shop-details.html?id=${catalog.id}`;
 
       const catalogItemHTML = `
                 <div class="product-item style-one mb-40">
@@ -61,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             <a href="${imageUrl}" class="img-popup icon-btn"><i class="fa fa-eye"></i></a>
                         </div>
                         <div class="cart-button">
-                            <a href="shops.html" class="cart-btn"><i class="far fa-shopping-basket"></i>
+                            <a target="_blank" href="${productDetailUrl}" class="cart-btn"><i class="far fa-shopping-basket"></i>
                                 <span class="text">Ver</span></a>
                         </div>
                     </div>
@@ -95,14 +97,22 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       $featureSlider.slick({
-        dots: false,
+        dots: true,
         arrows: false,
-        infinite: catalogs.length > 3, // O el número de slides a mostrar
-        speed: 500,
-        slidesToShow: 4,
-        slidesToScroll: 1,
+        infinite: true,
+        speed: 6000, // Velocidad de la animación
         autoplay: true,
-        autoplaySpeed: 3000,
+        autoplaySpeed: 0, // Transición continua
+        cssEase: "linear", // Movimiento suave
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        pauseOnHover: true, // Pausar al pasar el ratón
+        pauseOnFocus: true, // Pausar al hacer foco
+        swipe: true, // Permitir arrastre táctil
+        touchMove: true, // Permitir movimiento táctil
+        variableWidth: false, // Mejor rendimiento
+        centerMode: false,
+        focusOnSelect: false,
         appendArrows: jQuery(".feature-arrows.style-one"),
         prevArrow:
           '<button type="button" class="slick-prev"><i class="fas fa-chevron-left"></i></button>',

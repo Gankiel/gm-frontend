@@ -74,15 +74,24 @@ async function renderPopularCategoriesSlider() {
     $categorySlider.slick({
       dots: false,
       arrows: false,
-      infinite: popularCategories.length > 3, 
-      speed: 500,
+      infinite: true,
+      speed: 3000, // Velocidad de la animación (más lento para mejor visibilidad)
+      autoplay: true,
+      autoplaySpeed: 0, // Tiempo entre transiciones (0 para transición continua)
+      cssEase: "linear", // Transición lineal para movimiento suave
       slidesToShow: 6,
       slidesToScroll: 1,
-      autoplay: true,
-      autoplaySpeed: 3000,
-      appendArrows: $(".category-arrows.style-one"),    
+      pauseOnHover: true, // No pausar al pasar el ratón
+      pauseOnFocus: true, // No pausar al hacer foco
+      swipe: true, // Deshabilitar el arrastre manual
+      touchMove: true, // Deshabilitar el movimiento táctil
+      variableWidth: false, // Mantener ancho fijo para mejor rendimiento
+      centerMode: false,
+      focusOnSelect: false,
+      appendArrows: $(".category-arrows.style-one"),
+
       prevArrow:
-        '<button type="button" class="slick-prev"><span class="arrow-dot"></span><i class="fas fa-chevron-left"></i></button>', 
+        '<button type="button" class="slick-prev"><span class="arrow-dot"></span><i class="fas fa-chevron-left"></i></button>',
       nextArrow:
         '<button type="button" class="slick-next"><span class="arrow-dot"></span><i class="fas fa-chevron-right"></i></button>',
       responsive: [
@@ -90,21 +99,18 @@ async function renderPopularCategoriesSlider() {
           breakpoint: 1200,
           settings: {
             slidesToShow: 3,
-            infinite: popularCategories.length > 2,
           },
         },
         {
           breakpoint: 992,
           settings: {
             slidesToShow: 2,
-            infinite: popularCategories.length > 1,
           },
         },
         {
           breakpoint: 767,
           settings: {
             slidesToShow: 1,
-            infinite: popularCategories.length > 0, // false si solo hay 1
           },
         },
       ],

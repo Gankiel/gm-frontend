@@ -159,7 +159,7 @@ async function renderHeroSlider() {
       dots: true,
       arrows: true, // Cambiado a true para mostrar las flechas personalizadas
       infinite: true,
-      speed: 800,
+      speed: 100,
       appendArrows: sliderArrows, 
       appendDots: sliderDots,
       autoplay: false,
