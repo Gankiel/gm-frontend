@@ -72,17 +72,17 @@ async function renderPopularCategoriesSlider() {
     }
 
     $categorySlider.slick({
-      dots: false,
-      arrows: false,
-      infinite: popularCategories.length > 3, 
-      speed: 500,
-      slidesToShow: 6,
+      dots: true,
+      arrows: true,
+      infinite: true,
+      speed: 600, // Velocidad de la transición entre slides
+      autoplay: false, // Desactivamos el autoplay
+      slidesToShow: 5,
       slidesToScroll: 1,
-      autoplay: true,
-      autoplaySpeed: 3000,
-      appendArrows: $(".category-arrows.style-one"),    
+      appendArrows: $(".category-arrows.style-one"),
+
       prevArrow:
-        '<button type="button" class="slick-prev"><span class="arrow-dot"></span><i class="fas fa-chevron-left"></i></button>', 
+        '<button type="button" class="slick-prev"><span class="arrow-dot"></span><i class="fas fa-chevron-left"></i></button>',
       nextArrow:
         '<button type="button" class="slick-next"><span class="arrow-dot"></span><i class="fas fa-chevron-right"></i></button>',
       responsive: [
@@ -90,21 +90,18 @@ async function renderPopularCategoriesSlider() {
           breakpoint: 1200,
           settings: {
             slidesToShow: 3,
-            infinite: popularCategories.length > 2,
           },
         },
         {
           breakpoint: 992,
           settings: {
             slidesToShow: 2,
-            infinite: popularCategories.length > 1,
           },
         },
         {
           breakpoint: 767,
           settings: {
             slidesToShow: 1,
-            infinite: popularCategories.length > 0, // false si solo hay 1
           },
         },
       ],

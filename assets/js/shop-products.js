@@ -1,70 +1,82 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const strapiUrl = "https://gm-cms-production.up.railway.app"; 
- 
-const productsApiEndpoint = "/api/productos";
-const productContainer = document.getElementById("product-list-container");
+  const strapiUrl = "https://gm-cms-production.up.railway.app";
 
-if (!productContainer) {
-  console.error(
-    "El contenedor de productos (#product-list-container) no fue encontrado en el DOM."
-  );
-  return;
-}
+  const productsApiEndpoint = "/api/productos";
+  const productContainer = document.getElementById("product-list-container");
 
-async function fetchAllProducts() {
-  const pageSize = 1000; 
-  let page = 1;
-  let allProducts = [];
-  let totalPages = 1;
-
-  try {
-    do {
-      const response = await fetch(
-        `${strapiUrl}${productsApiEndpoint}?populate=imagenes&pagination[page]=${page}&pagination[pageSize]=${pageSize}`
-      );
-
-      if (!response.ok) {
-        throw new Error(
-          `Error al obtener los productos de Strapi. Código HTTP: ${response.status}`
-        );
-      }
-
-      const jsonData = await response.json();
-      const products = jsonData.data;
-      const meta = jsonData.meta.pagination;
-
-      if (products && products.length > 0) {
-        allProducts = [...allProducts, ...products];
-      }
-
-      totalPages = meta.pageCount;
-      page++;
-    } while (page <= totalPages);
-
-    if (allProducts.length === 0) {
-      productContainer.innerHTML =
-        "<p>No hay productos disponibles en este momento.</p>";
-      return;
-    }
-
-    renderProducts(allProducts);
-  } catch (error) {
-    console.error("Error al cargar los productos:", error);
-    productContainer.innerHTML =
-      "<p>Hubo un error al cargar los productos. Por favor, inténtalo de nuevo más tarde.</p>";
+  if (!productContainer) {
+    console.error(
+      "El contenedor de productos (#product-list-container) no fue encontrado en el DOM."
+    );
+    return;
   }
-}
+
+  async function fetchAllProducts() {
+    const pageSize = 1000;
+    let page = 1;
+    let allProducts = [];
+    let totalPages = 1;
+
+    try {
+      do {
+        const response = await fetch(
+          `${strapiUrl}${productsApiEndpoint}?populate=imagenes&pagination[page]=${page}&pagination[pageSize]=${pageSize}`
+        );
+
+        if (!response.ok) {
+          throw new Error(
+            `Error al obtener los productos de Strapi. Código HTTP: ${response.status}`
+          );
+        }
+
+        const jsonData = await response.json();
+        const products = jsonData.data;
+        const meta = jsonData.meta.pagination;
+
+        if (products && products.length > 0) {
+          allProducts = [...allProducts, ...products];
+        }
+
+        totalPages = meta.pageCount;
+        page++;
+      } while (page <= totalPages);
+
+      if (allProducts.length === 0) {
+        productContainer.innerHTML =
+          "<p>No hay productos disponibles en este momento.</p>";
+        return;
+      }
+
+      renderProducts(allProducts);
+    } catch (error) {
+      console.error("Error al cargar los productos:", error);
+      productContainer.innerHTML =
+        "<p>Hubo un error al cargar los productos. Por favor, inténtalo de nuevo más tarde.</p>";
+    }
+  }
+
+  function shuffleArray(array) {
+    const newArray = [...array];
+    for (let i = newArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+    }
+    return newArray;
+  }
 
   function renderProducts(products) {
     productContainer.innerHTML = ""; // Limpiar cualquier contenido estático o de carga
 
-    products.forEach((product) => {
+    // Shuffle the products array before rendering
+    const shuffledProducts = shuffleArray(products);
+
+    shuffledProducts.forEach((product) => {
       const productId = product.documentId;
       const productTitle = product.titulo || "Nombre del Producto";
       const productPrice =
-       typeof product.precio === "number" &&!isNaN(product.precio)
-        ? `${product.precio.toLocaleString()}`
-        : "";
+        typeof product.precio === "number" && !isNaN(product.precio)
+          ? `${product.precio.toLocaleString()}`
+          : "";
 
       // Tomar la URL de la primera imagen del array 'imagenes'
       let imageUrl = "assets/images/products/default-placeholder.png"; // Imagen por defecto
@@ -124,5 +136,5 @@ async function fetchAllProducts() {
     }
   }
 
- fetchAllProducts();
+  fetchAllProducts();
 });
